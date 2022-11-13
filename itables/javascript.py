@@ -9,7 +9,7 @@ from base64 import b64encode
 
 import numpy as np
 import pandas as pd
-from IPython.display import HTML, Javascript, display
+from IPython.display import HTML, display
 from six import string_types
 
 import itables.options as opt
@@ -78,18 +78,25 @@ def init_notebook_mode(
             del pd.Series._repr_html_
 
     if not connected:
-        display(Javascript(read_package_file("external/jquery.min.js")))
-        # We use datatables' ES module version because the non module version
-        # fails to load as a simple script in the presence of require.js
-        dt64 = b64encode(
-            read_package_file("external/jquery.dataTables.mjs").encode("utf-8")
-        ).decode("ascii")
+
+        def b64_encode(file):
+            return "data:text/javascript;base64,{}".format(
+                b64encode(read_package_file(file).encode("utf-8")).decode("ascii")
+            )
+
         display(
             HTML(
-                replace_value(
-                    read_package_file("html/itables_render.html"),
-                    "dt_src",
-                    "data:text/javascript;base64,{}".format(dt64),
+                '<script type="importmap">{}</script>'.format(
+                    json.dumps(
+                        {
+                            "imports": {
+                                "jquery": b64_encode("external/jquery.mjs"),
+                                "datatables.net": b64_encode(
+                                    "external/jquery.dataTables.mjs"
+                                ),
+                            }
+                        }
+                    )
                 )
             )
         )

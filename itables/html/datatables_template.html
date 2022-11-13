@@ -1,22 +1,18 @@
 <style></style>
 <div class="itables">
 <table id="table_id"><thead><tr><th>A</th></tr></thead></table>
-<script>
-    // We use a namespace per table (= the next curly bracket)
-    // to avoid conflicts between the various tables' data & dt_args
-    {
-        // Define the table data
-        const data = [];
+<script type="module">
+    // Import jquery and DataTable
+    import DataTable from 'datatables.net';
 
-        // Define the dt_args
-        let dt_args = {};
-        dt_args["data"] = data;
+    // Define the table data
+    const data = [];
 
-        // Display the table
-        $(document).ready(function () {
-            // [pre-dt-code]
-            window.__itables_render('#table_id', dt_args);
-        });
-    }
+    // Define the dt_args
+    let dt_args = {};
+    dt_args["data"] = data;
+
+    // [pre-dt-code]
+    new DataTable('#table_id', dt_args);
 </script>
 </div>
