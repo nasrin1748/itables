@@ -1,12 +1,11 @@
 <style></style>
 <div class="itables">
 <table id="table_id"><thead><tr><th>A</th></tr></thead></table>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script type="importmap">{"imports": {"datatables.net": "https://cdn.datatables.net/1.13.1/js/jquery.dataTables.mjs", "jquery": "https://esm.sh/jquery@3.5.0"}}</script>
 <script type="module">
     // Import jquery and DataTable
-    import 'https://code.jquery.com/jquery-3.6.0.min.js';
-    import dt from 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.mjs';
-    dt($);
+    import DataTable from 'datatables.net';
 
     // Define the table data
     const data = [];
@@ -15,9 +14,7 @@
     let dt_args = {};
     dt_args["data"] = data;
 
-    $(document).ready(function () {
-        // [pre-dt-code]
-        $('#table_id').DataTable(dt_args);
-    });
+    // [pre-dt-code]
+    new DataTable('#table_id', dt_args);
 </script>
 </div>
