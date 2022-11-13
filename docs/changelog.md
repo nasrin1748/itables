@@ -1,6 +1,13 @@
 ITables ChangeLog
 =================
 
+2.0.0 (2022-11-??)
+------------------
+
+**Changed**
+- `itables` uses the ESM version 1.13.1 of datatables.net.
+
+
 1.3.5 (2022-11-12)
 ------------------
 
