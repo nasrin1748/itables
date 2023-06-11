@@ -1,0 +1,60 @@
+---
+title: ITables in Quarto
+subtitle: Interactive tables in RevealJS presentations
+author: Marc Wouts
+standalone: true
+format:
+  revealjs
+---
+
+## Using ITables {.smaller}
+
+ITables works in the same way in Quarto documents as in
+Jupyter notebooks:
+
+```{python}
+#| echo: true
+
+from itables import init_notebook_mode, show
+from itables.sample_dfs import get_countries
+
+
+init_notebook_mode(all_interactive=True)
+```
+
+## Adjusting the itables options {.smaller}
+
+Adjust the font, the style and possibly the number
+of displayed rows to make your interactive tables fit on your slides:
+
+```{python}
+#| echo: true
+
+import itables.options as opt
+
+
+# opt.lengthMenu = [5, 10]
+opt.css = ".itables { font-size: medium; }"
+opt.style = 'data-quarto-disable-processing="true" table-layout:auto;width:100%'
+```
+
+Note that
+
+- Available sizes are documented [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)
+- Quarto has a cache, so use `quarto render --cache-refresh` if you remove any option above
+
+## A sample dataframe
+
+```{python}
+#| echo: true
+
+get_countries(html=False)
+```
+
+## A complex dataframe
+
+```{python}
+#| echo: true
+
+show(get_countries(), lengthMenu=[5, 10])
+```

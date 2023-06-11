@@ -1,0 +1,38 @@
+---
+title: ITables in Quarto
+subtitle: Interactive tables in HTML reports
+author: Marc Wouts
+standalone: true
+format:
+  html
+---
+
+## Using ITables
+
+You can use `itables` in
+[Quarto HTML](https://quarto.org/docs/reference/formats/html.html) documents.
+
+It works exactly the same way as for your Jupyter notebooks.
+
+```{python}
+from itables import init_notebook_mode
+from itables.sample_dfs import get_countries
+import itables.options as opt
+
+
+init_notebook_mode(all_interactive=True)
+
+opt.style = 'data-quarto-disable-processing="true"'
+```
+
+## A sample dataframe
+
+```{python}
+get_countries(html=False)
+```
+
+## A complex dataframe
+
+```{python}
+get_countries()
+```
