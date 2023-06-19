@@ -35,7 +35,6 @@ import itables.options as opt
 
 # opt.lengthMenu = [5, 10]
 opt.css = ".itables { font-size: medium; }"
-opt.style = 'data-quarto-disable-processing="true" table-layout:auto;width:100%'
 ```
 
 Note that

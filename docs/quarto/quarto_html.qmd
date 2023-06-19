@@ -17,12 +17,9 @@ It works exactly the same way as for your Jupyter notebooks.
 ```{python}
 from itables import init_notebook_mode
 from itables.sample_dfs import get_countries
-import itables.options as opt
 
 
 init_notebook_mode(all_interactive=True)
-
-opt.style = 'data-quarto-disable-processing="true"'
 ```
 
 ## A sample dataframe
